@@ -5,9 +5,6 @@ namespace AdiSamController
 {
     public class PlayerControl : MonoBehaviour
     {
-        public event EventHandler<OnBuildEventsArgs> OnBuild;
-        public class OnBuildEventsArgs : EventArgs {};
-
         private float horizontalValue;
         private float verticalValue;
         public float moveSpeed = 1f;
@@ -73,7 +70,5 @@ namespace AdiSamController
                 transform.position += movementInput * moveSpeed * movementSpeed * Time.fixedDeltaTime;
             }
         }
-
-        private void Building(){}
     }
 }

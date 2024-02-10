@@ -58,7 +58,8 @@ public class EnemyController : MonoBehaviour
 
     private void EndPointReached()
     {
-        Debug.Log("That's All");
+        
+        EnemyMaker.ReturnToPool(gameObject);
     }
 
     private Vector3 GetWaypointPosition(int index)

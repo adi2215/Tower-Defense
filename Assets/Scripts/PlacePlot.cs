@@ -1,12 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlacePlot : MonoBehaviour
 {
-    [SerializeField] private GameObject[] selectPlot;
+    public static event EventHandler<OnBuildEventsArgs> OnBuild;
+    public class OnBuildEventsArgs : EventArgs { 
+        public Item item;
+        public Vector3 positionPlot;
+        public GameObject plot;
+    }
 
-    private GameObject tower;
+    [SerializeField] private GameObject[] selectPlot;
 
     private void Start() => TurnOff();
 
@@ -16,7 +20,13 @@ public class PlacePlot : MonoBehaviour
     }
 
     private void OnMouseDown() {
-        Debug.Log("gef");
+        InventorySlot slot = InventoryManager.instance.inventorySlot;
+        InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
+
+        if (itemInSlot != null)
+            OnBuild?.Invoke(this, new OnBuildEventsArgs { item = itemInSlot.item, 
+            positionPlot = transform.position, 
+            plot = gameObject });
     }
 
     private void OnMouseExit()
