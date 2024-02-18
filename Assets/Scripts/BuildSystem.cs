@@ -38,5 +38,6 @@ public class BuildSystem : MonoBehaviour
     {
         Instantiate(towerKeys[e.item.type], e.positionPlot, Quaternion.identity);
         Destroy(e.plot);
+        InventoryManager.instance.DeleteItem();
     }
 }

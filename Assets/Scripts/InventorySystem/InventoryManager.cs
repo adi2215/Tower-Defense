@@ -20,14 +20,9 @@ public class InventoryManager : MonoBehaviour
         InventorySlot slot = inventorySlot;
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();
 
-        if (itemInSlot == null)
+        if (itemInSlot == null && LevelManager.instanceSingleton.BuyingBuild(item.cost))
             SpawnItem(item, slot);
-
-        else
-        {
-            DeleteItem();
-            SpawnItem(item, slot);
-        }
+        
     }
 
     private void SpawnItem(Item item, InventorySlot slot)
@@ -37,7 +32,7 @@ public class InventoryManager : MonoBehaviour
         inventoryItem.InitialItem(item);
     }
 
-    private void DeleteItem()
+    internal void DeleteItem()
     {
         InventorySlot slot = inventorySlot;
         InventoryItem itemInSlot = slot.GetComponentInChildren<InventoryItem>();

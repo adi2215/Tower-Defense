@@ -66,7 +66,6 @@ public class EnemyMaker : MonoBehaviour
 
     public static void ReturnToPool(GameObject instance)
     {
-        instance.SetActive(false);
         instance.GetComponent<EnemyStats>().Die();
     }
 
@@ -109,7 +108,7 @@ public class SmileUnitsFactory : EnemyFactory
         SimpleSlime simple = newInstance.GetComponent<SimpleSlime>();
         SpriteRenderer spriteColor = newInstance.GetComponent<SpriteRenderer>();
         spriteColor.color = simple.colorSlime;
-        simple.Init(1, 1);
+        simple.Init(5, 1);
         
         Person<SimpleSlime> newTupleEnemy = 
         new Person<SimpleSlime>(simple, newInstance);
@@ -124,7 +123,7 @@ public class SmileUnitsFactory : EnemyFactory
         ShieldSlime shield = newInstance.GetComponent<ShieldSlime>();
         SpriteRenderer spriteColor = newInstance.GetComponent<SpriteRenderer>();
         spriteColor.color = shield.colorSlime;
-        shield.Init(2, 1);
+        shield.Init(7, 1);
 
         Person<ShieldSlime> newTupleEnemy = 
         new Person<ShieldSlime>(shield, newInstance);
@@ -139,7 +138,7 @@ public class SmileUnitsFactory : EnemyFactory
         PowerFlySlime powerFly = newInstance.GetComponent<PowerFlySlime>();
         SpriteRenderer spriteColor = newInstance.GetComponent<SpriteRenderer>();
         spriteColor.color = powerFly.colorSlime;
-        powerFly.Init(1, 2);
+        powerFly.Init(5, 2);
 
         Person<PowerFlySlime> newTupleEnemy = 
         new Person<PowerFlySlime>(powerFly, newInstance);

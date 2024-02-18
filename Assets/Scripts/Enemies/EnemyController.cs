@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour
 {
+    public delegate void OnEndReached(EnemyController slime);
+    public static OnEndReached onEndReach;
+
     private Vector3 CurrentPoint;
     private Vector3[] wayPoints;
 
@@ -58,7 +61,7 @@ public class EnemyController : MonoBehaviour
 
     private void EndPointReached()
     {
-        
+        onEndReach?.Invoke(this);
         EnemyMaker.ReturnToPool(gameObject);
     }
 
